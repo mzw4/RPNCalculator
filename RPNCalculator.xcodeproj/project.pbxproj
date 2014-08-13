@@ -22,6 +22,7 @@
 		27AE076A199AE19D00EA1EA7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27AE0749199AE19D00EA1EA7 /* UIKit.framework */; };
 		27AE0772199AE19D00EA1EA7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27AE0770199AE19D00EA1EA7 /* InfoPlist.strings */; };
 		27AE0774199AE19D00EA1EA7 /* RPNCalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE0773199AE19D00EA1EA7 /* RPNCalculatorTests.m */; };
+		27AE077F199AEF9000EA1EA7 /* CalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE077E199AEF9000EA1EA7 /* CalculatorBrain.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		27AE076F199AE19D00EA1EA7 /* RPNCalculatorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RPNCalculatorTests-Info.plist"; sourceTree = "<group>"; };
 		27AE0771199AE19D00EA1EA7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27AE0773199AE19D00EA1EA7 /* RPNCalculatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RPNCalculatorTests.m; sourceTree = "<group>"; };
+		27AE077D199AEF9000EA1EA7 /* CalculatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorBrain.h; sourceTree = "<group>"; };
+		27AE077E199AEF9000EA1EA7 /* CalculatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorBrain.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				27AE0754199AE19D00EA1EA7 /* CalculatorAppDelegate.h */,
 				27AE0755199AE19D00EA1EA7 /* CalculatorAppDelegate.m */,
 				27AE0757199AE19D00EA1EA7 /* Main_iPhone.storyboard */,
+				27AE077D199AEF9000EA1EA7 /* CalculatorBrain.h */,
+				27AE077E199AEF9000EA1EA7 /* CalculatorBrain.m */,
 				27AE075A199AE19D00EA1EA7 /* Main_iPad.storyboard */,
 				27AE075D199AE19D00EA1EA7 /* CalculatorViewController.h */,
 				27AE075E199AE19D00EA1EA7 /* CalculatorViewController.m */,
@@ -256,6 +261,7 @@
 			files = (
 				27AE0756199AE19D00EA1EA7 /* CalculatorAppDelegate.m in Sources */,
 				27AE0752199AE19D00EA1EA7 /* main.m in Sources */,
+				27AE077F199AEF9000EA1EA7 /* CalculatorBrain.m in Sources */,
 				27AE075F199AE19D00EA1EA7 /* CalculatorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
