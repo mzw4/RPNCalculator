@@ -42,6 +42,7 @@
 }
 
 - (IBAction)operationPressed:(UIButton *)sender {
+    NSLog(@"OPERATION PRESSED! ZOMG");
     if(self.userInTheMiddleOfEnteringANumber) [self enterPressed];
     double result = [self.brain performOperation:sender.currentTitle];
     self.display.text = [NSString stringWithFormat:@"%g", result];

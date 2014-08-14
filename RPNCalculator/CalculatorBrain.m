@@ -9,45 +9,70 @@
 #import "CalculatorBrain.h"
 
 @interface CalculatorBrain()
-@property (nonatomic, strong) NSMutableArray *operandStack;
+@property (nonatomic, strong) NSMutableArray *programStack;
 @end
 
 @implementation CalculatorBrain
 
-@synthesize operandStack = _operandStack;
+@synthesize programStack = _programStack;
 
-- (NSMutableArray *)operandStack {
-    if(_operandStack == nil) {
-        _operandStack = [[NSMutableArray alloc] init];
+- (NSMutableArray *)programStack {
+    if(_programStack == nil) {
+        _programStack = [[NSMutableArray alloc] init];
     }
-    return _operandStack;
+    return _programStack;
 }
 
 - (void)pushOperand:(double)operand {
-    if(self.operandStack)
-    [self.operandStack addObject:[NSNumber numberWithDouble:operand]];
-}
-
-- (double)popOperand {
-    NSNumber *operand = [self.operandStack lastObject];
-    if(operand) [self.operandStack removeLastObject];
-    return [operand doubleValue];
+    if(self.programStack)
+    [self.programStack addObject:[NSNumber numberWithDouble:operand]];
 }
 
 - (double)performOperation:(NSString *)operation {
+    NSLog(@"OMG PERFORMING");
+    [self.programStack addObject:operation];
+    return [CalculatorBrain runProgram:self.program];
+}
+
++ (double)popOperand:(NSMutableArray *)stack {
     double result = 0;
-    if([operation isEqualToString:@"+"]) {
-        result = [self popOperand] + [self popOperand];
-    } else if([operation isEqualToString:@"*"]) {
-        result = [self popOperand] * [self popOperand];
-    } else if([operation isEqualToString:@"-"]) {
-        result = [self popOperand] - [self popOperand];
-    } else if([operation isEqualToString:@"/"]) {
-        // Doesn't work
-        result = [self popOperand] / [self popOperand];
+    id topOfStack = [stack lastObject];
+    if(topOfStack) [stack removeLastObject];
+    
+    if([topOfStack isKindOfClass:[NSNumber class]]) {
+        result = [topOfStack doubleValue];
+    } else if([topOfStack isKindOfClass:[NSString class]]) {
+        NSString *operation = topOfStack;
+        if([operation isEqualToString:@"+"]) {
+            result = [self popOperand:stack] + [self popOperand:stack];
+        } else if([operation isEqualToString:@"*"]) {
+            result = [self popOperand:stack] * [self popOperand:stack];
+        } else if([operation isEqualToString:@"-"]) {
+            result = [self popOperand:stack] - [self popOperand:stack];
+        } else if([operation isEqualToString:@"/"]) {
+            double divisor = [self popOperand:stack];
+            if(divisor) result = [self popOperand:stack] / divisor;
+        }
     }
-    [self.operandStack addObject:[NSNumber numberWithDouble:result]];
+    
     return result;
+}
+
+- (id)program {
+    return [self.programStack copy];
+}
+
++ (double)runProgram:(id)program {
+    NSMutableArray *stack;
+    if([program isKindOfClass:[NSArray class]]) {
+        stack = [program mutableCopy];
+    }
+    return [self popOperand:stack];
+}
+
++ (NSString *)descriptionOfProgram:(id)program {
+     // blah blah
+    return nil;
 }
 
 @end
